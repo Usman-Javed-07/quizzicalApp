@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  :root {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+  }
+  html {
+    font-size: 62.5%;
+  }
+  
+  body {
+    margin: 0 auto;
+    /* padding: 0 32px; */
+    min-width: 320px;
+    background-color: #f5f7fb;
+  }
+.main-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.quiz-heading{
+    color: #293264;
+    letter-spacing: 1px;
+    font-size: 5rem;
+}
+
+.quiz-description {
+    color: #293264;
+    font-weight: 200;
+    letter-spacing: 1px;
+    font-size: 2rem;
+}
+
+.quiz-button{
+    margin-top: 20px;
+}
+.quiz-button a {
+    text-decoration: none;
+}
+#start-quiz {
+ padding: 12px 30px;
+ cursor: pointer;
+ font-size: 1.5rem;
+ font-weight: 600;
+ background-color: #4D5B9E;
+ border: none;
+ border-radius: 10px;
+ transition: all ease 0.5s;
+ color: #fff;
+}
+#start-quiz:hover {
+background-color: black;
+ 
+}
+
+.quizes{
+    height: 300px;
+    background-color: #4D5B9E;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.quiz-container {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+    height: 100vh;
+  background-color: #d5e2ff;
+}
+
+.quizes h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #fff;
+}
+
+  .quiz-section {
+    display: contents;
+  }
+  
+@media screen and (max-width :1023px) {
+    .quiz-container {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media screen and (max-width :475px) {
+    .quiz-container {
+        grid-template-columns: repeat(1,1fr);
+        height: auto;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+}
