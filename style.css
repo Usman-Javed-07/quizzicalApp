@@ -120,3 +120,67 @@ background-color: black;
         padding-bottom: 30px;
     }
 }
+
+/* quiz question */
+.quiz-quesiton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.question h2 {
+  color: #293264;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.options{
+  gap: 15px;
+  display: flex;
+}
+.radio-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #293264;
+  border-radius: 25px;
+  cursor: pointer;
+  min-width: 120px;
+  min-height: 20px;
+  padding: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color: #293264;
+  font-size: 14px;
+}
+.options input:checked + .radio-label {
+  background: #d6dbf5;  
+  color: #d6dbf5;
+  border: none;
+}
+.options input {
+  display: none;
+}
+.radio-label:hover {
+  background-color: #e0e0e0;
+}
+
+@media screen and (max-width: 767px) {
+  .options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .radio-label {
+    padding: 6px;
+    font-size: 13px;
+  }
+  .question h2 {
+    font-size: 14px;
+  }
+}
+hr {
+  margin-top: 20px;
+  height: 1.5px;
+  background-color: #cacfe7;
+
+}
