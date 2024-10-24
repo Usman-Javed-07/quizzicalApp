@@ -4,7 +4,8 @@ async function getData(api) {
     const API = await fetch(api);
 
     const data = await API.json();
-    console.log(data);
+    // console.log(data);
+    displayQuiz (data)
     return data;
  
 }
@@ -16,7 +17,7 @@ quizzes.forEach(quiz =>{
   
    quiz.addEventListener('click' , function(e){
     let el = e.target.parentElement
-    let category = el.getAttribute('data-category')
+    let category = el.getAttribute('data-category');
     console.log(category);
 
     if(category === 'Science: Computers') {
@@ -32,29 +33,29 @@ quizzes.forEach(quiz =>{
     
    });
 });
-
-let quizQuestions = `
-      <div class="quiz-question-container">
-      <div class="quiz-quesiton">
-        <div class="question">
-          <h2> ${}</h2>
+  function displayQuiz (quizData) {
+ let quizContainer = document.getElementsByClassName('quiz-question-container');
+ quizContainer.innerHTML ='';
+console.log(quizData)
+for(let i = 0 ; i<quizData.length; i++) {
+    let quizQuestions  = `
+    <div class="quiz-question">
+          <div class="question">
+            <h2>Q${index + 1}: ${question}</h2>
+          </div>
+          <div class="options">
+            ${options.map((option, idx) => `
+              <input type="radio" id="option${idx}" name="quiz${index}" value="${option}" />
+              <label for="option${idx}" class="radio-label">${option}</label>
+            `).join('')}
+          </div>
         </div>
+        <hr />
+      `
 
-        <div class="options">
-          <input type="radio" id="option1" name="quiz" value="jelly" />
-          <label for="option1" class="radio-label">${}</label>
+            }
+  }
 
-          <input type="radio" id="option2" name="quiz" value="lollipop" />
-          <label for="option2" class="radio-label">${}</label>
 
-          <input type="radio" id="option3" name="quiz" value="nutella" />
-          <label for="option3" class="radio-label">${}</label>
 
-          <input type="radio" id="option4" name="quiz" value="froyo" />
-          <label for="option4" class="radio-label">${}</label>
-        </div>
-      </div>
-      <hr />
-    </div>     
 
-`
