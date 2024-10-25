@@ -4,8 +4,8 @@ async function getData(api) {
     const API = await fetch(api);
 
     const data = await API.json();
-    // console.log(data);
-    displayQuiz (data)
+    console.log(data);
+    // displayQuiz(data);
     return data;
  
 }
@@ -33,28 +33,30 @@ quizzes.forEach(quiz =>{
     
    });
 });
-  function displayQuiz (quizData) {
- let quizContainer = document.getElementsByClassName('quiz-question-container');
- quizContainer.innerHTML ='';
-console.log(quizData)
-for(let i = 0 ; i<quizData.length; i++) {
-    let quizQuestions  = `
-    <div class="quiz-question">
-          <div class="question">
-            <h2>Q${index + 1}: ${question}</h2>
-          </div>
-          <div class="options">
-            ${options.map((option, idx) => `
-              <input type="radio" id="option${idx}" name="quiz${index}" value="${option}" />
-              <label for="option${idx}" class="radio-label">${option}</label>
-            `).join('')}
-          </div>
-        </div>
-        <hr />
-      `
-
-            }
-  }
+//   function displayQuiz (quizData) {
+//  let quizContainer = document.getElementsByClassName('quiz-question-container');
+//  quizContainer.innerHTML ='';
+// console.log(quizData)
+// for(let i = 0 ; i<quizData.results.length; i++) {
+    
+//     let quizQuestions  = `
+//     <div class="quiz-question">
+//           <div class="question">
+//             <h2>${i + 1}: ${quizData.results.question}</h2>
+//           </div>
+//           <div class="options">
+            
+//             ${quizData.results.incorrect_answers.map((option, idx) => `
+//               <input type="radio" id="option${idx}" name="quiz${index}" value="${option}" />
+//               <label for="option${idx}" class="radio-label">${option}</label>
+//             `).join('')}
+//           </div>
+//         </div>
+//         <hr />
+//       `
+//       console.log(quizQuestions);
+//             }   
+//   }
 
 
 
