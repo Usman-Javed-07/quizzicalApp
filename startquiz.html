@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -29,5 +29,62 @@
       </div>
       <hr />
     </div>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Started</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="quiz-question-container" id="quiz-questions">
+      <!-- Quiz questions will be loaded here -->
+    </div>
+
+    <script>
+      // Retrieve quiz data from localStorage
+      const quizData = JSON.parse(localStorage.getItem("quizData"));
+
+      function displayQuiz(quizData) {
+        const quizContainer = document.getElementById("quiz-questions");
+        quizContainer.innerHTML = "";
+
+        quizData.forEach((questionData, index) => {
+          const questionHTML = `
+            <div class="quiz-question">
+              <div class="question">
+                <h2>${index + 1}: ${questionData.question}</h2>
+              </div>
+              <div class="options">
+                ${[
+                  ...questionData.incorrect_answers,
+                  questionData.correct_answer,
+                ]
+                  .sort(() => Math.random() - 0.5)
+                  .map(
+                    (option, idx) => `
+                    <input type="radio" id="option${index}-${idx}" name="quiz${index}" value="${option}" />
+                    <label for="option${index}-${idx}" class="radio-label">${option}</label>`
+                  )
+                  .join("")}
+              </div>
+            </div>
+            <hr />
+          `;
+          quizContainer.innerHTML += questionHTML;
+        });
+      }
+
+      if (quizData) {
+        displayQuiz(quizData);
+      } else {
+        document.getElementById("quiz-questions").innerText =
+          "No quiz data available.";
+      }
+    </script>
   </body>
 </html>
