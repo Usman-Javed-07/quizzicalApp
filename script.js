@@ -89,7 +89,3 @@ quizzes.forEach((quiz) => {
 
 
 
-
-// 
-
-
