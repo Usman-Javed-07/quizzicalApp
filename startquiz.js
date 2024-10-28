@@ -7,6 +7,7 @@
 
    quizData.forEach((questionData, index) => {
      const questionHTML = `
+         <div class="quiz-question-container" id="quiz-questions">
        <div class="quiz-question">
          <div class="question">
            <h2>${index + 1}: ${questionData.question}</h2>
@@ -26,6 +27,7 @@
          </div>
        </div>
        <hr />
+           </div>
      `;
      quizContainer.innerHTML += questionHTML;
    });
@@ -37,3 +39,6 @@
    document.getElementById("quiz-questions").innerText =
      "No quiz data available.";
  }
+
+
+

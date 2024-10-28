@@ -50,49 +50,21 @@
   </head>
   <body>
     <div class="quiz-question-container" id="quiz-questions">
-      <!-- Quiz questions will be loaded here -->
+      <!--  -->
+      <div class="quiz-quesiton">
+        <!-- <div class="question">
+          <h2>What was the name given to Android 4.3</h2>
+        </div>
+
+        <div class="options">
+          <input type="radio" id="option1" name="quiz" value="jelly" />
+          <label for="option1" class="radio-label">Jelly</label>
+        </div> -->
+      </div>
+      <hr />
+      <!--  -->
     </div>
 
-    <script src="startquiz.js">
-      // // Retrieve quiz data from localStorage
-      // const quizData = JSON.parse(localStorage.getItem("quizData"));
-
-      // function displayQuiz(quizData) {
-      //   const quizContainer = document.getElementById("quiz-questions");
-      //   quizContainer.innerHTML = "";
-
-      //   quizData.forEach((questionData, index) => {
-      //     const questionHTML = `
-      //       <div class="quiz-question">
-      //         <div class="question">
-      //           <h2>${index + 1}: ${questionData.question}</h2>
-      //         </div>
-      //         <div class="options">
-      //           ${[
-      //             ...questionData.incorrect_answers,
-      //             questionData.correct_answer,
-      //           ]
-      //             .sort(() => Math.random() - 0.5)
-      //             .map(
-      //               (option, idx) => `
-      //               <input type="radio" id="option${index}-${idx}" name="quiz${index}" value="${option}" />
-      //               <label for="option${index}-${idx}" class="radio-label">${option}</label>`
-      //             )
-      //             .join("")}
-      //         </div>
-      //       </div>
-      //       <hr />
-      //     `;
-      //     quizContainer.innerHTML += questionHTML;
-      //   });
-      // }
-
-      // if (quizData) {
-      //   displayQuiz(quizData);
-      // } else {
-      //   document.getElementById("quiz-questions").innerText =
-      //     "No quiz data available.";
-      // }
-    </script>
+    <script src="startquiz.js"></script>
   </body>
 </html>

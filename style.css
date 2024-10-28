@@ -19,8 +19,12 @@
     /* padding: 0 32px; */
     min-width: 320px;
     background-color: #f5f7fb;
+    display: flex;
+    justify-content: center;
+    /* margin-top: 30px; */
   }
-.main-section {
+
+  .main-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -95,7 +99,7 @@ background-color: black;
     justify-items: center;
     align-items: center;
     height: 100vh;
-  background-color: #d5e2ff;
+  /* background-color: #d5e2ff; */
   padding: 30px;
 }
 
@@ -197,5 +201,8 @@ hr {
   background-color: #cacfe7;
 
 }
-
-
+div.options {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
