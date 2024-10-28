@@ -5,34 +5,33 @@ const quizData = JSON.parse(localStorage.getItem("quizData"));
 let currentPage = 1;
 const questionsPerPage = 5;
 
-const userAnswers = [];
+const userAnswers = Array(quizData.length).fill(null); 
 
 function displayQuiz(quizData) {
   const quizContainer = document.getElementById("quiz-questions");
   quizContainer.innerHTML = "";
 
-//    calculate start and end index
+  // Calculate start and end index for questions on the current page
   const startIndex = (currentPage - 1) * questionsPerPage;
   const endIndex = Math.min(startIndex + questionsPerPage, quizData.length);
 
   // Display only questions for the current page
   quizData.slice(startIndex, endIndex).forEach((questionData, index) => {
+    const questionIndex = startIndex + index; 
     const questionHTML = `
       <div class="quiz-question-container">
         <div class="quiz-question">
           <div class="question">
-            <h2>${startIndex + index + 1}: ${questionData.question}</h2>
+            <h2>${questionIndex + 1}: ${questionData.question}</h2>
           </div>
           <div class="options">
-            ${[
-              ...questionData.incorrect_answers,
-              questionData.correct_answer,
-            ]
+            ${[...questionData.incorrect_answers, questionData.correct_answer]
               .sort(() => Math.random() - 0.5)
               .map(
                 (option, idx) => `
-                <input type="radio" id="option${startIndex + index}-${idx}" name="quiz${startIndex + index}" value="${option}" />
-                <label for="option${startIndex + index}-${idx}" class="radio-label">${option}</label>`
+                <input type="radio" id="option${questionIndex}-${idx}" name="quiz${questionIndex}" value="${option}"
+                  ${userAnswers[questionIndex] === option ? "checked" : ""} />
+                <label for="option${questionIndex}-${idx}" class="radio-label">${option}</label>`
               )
               .join("")}
           </div>
@@ -49,17 +48,20 @@ function displayQuiz(quizData) {
   document.getElementById("check-answer-btn").style.display = endIndex >= quizData.length ? "inline" : "none";
 }
 
-// Capture the user's answers
+// Capture the user's answers on the current page
 function captureAnswers() {
-  quizData.forEach((questionData, index) => {
-    const selectedOption = document.querySelector(`input[name="quiz${index}"]:checked`);
-    userAnswers[index] = selectedOption ? selectedOption.value : null;
-  });
+  const startIndex = (currentPage - 1) * questionsPerPage;
+  const endIndex = Math.min(startIndex + questionsPerPage, quizData.length);
+
+  for (let i = startIndex; i < endIndex; i++) {
+    const selectedOption = document.querySelector(`input[name="quiz${i}"]:checked`);
+    userAnswers[i] = selectedOption ? selectedOption.value : null;
+  }
 }
 
 // Event listeners for Next and Previous buttons
 document.getElementById("next-btn").addEventListener("click", () => {
-  captureAnswers();
+  captureAnswers(); 
   if (currentPage * questionsPerPage < quizData.length) {
     currentPage++;
     displayQuiz(quizData);
@@ -67,7 +69,7 @@ document.getElementById("next-btn").addEventListener("click", () => {
 });
 
 document.getElementById("prev-btn").addEventListener("click", () => {
-  captureAnswers();
+  captureAnswers(); 
   if (currentPage > 1) {
     currentPage--;
     displayQuiz(quizData);
@@ -76,7 +78,7 @@ document.getElementById("prev-btn").addEventListener("click", () => {
 
 // Event listener for Check Answers button
 document.getElementById("check-answer-btn").addEventListener("click", () => {
-  captureAnswers();
+  captureAnswers(); 
   displayResults();
 });
 
@@ -88,7 +90,8 @@ function displayResults() {
   let correctCount = 0;
 
   quizData.forEach((questionData, index) => {
-    const isCorrect = userAnswers[index] === questionData.correct_answer;
+    const userAnswer = userAnswers[index];
+    const isCorrect = userAnswer === questionData.correct_answer;
     if (isCorrect) correctCount++;
 
     const questionHTML = `
@@ -100,11 +103,16 @@ function displayResults() {
           <div class="options">
             ${[...questionData.incorrect_answers, questionData.correct_answer]
               .sort((a, b) => a.localeCompare(b))
-              .map(option => `
-                <label class="radio-label" style="background-color: ${
-                  option === questionData.correct_answer ? '#94d7a2' : userAnswers[index] === option ? '#f8bcbc' : ''
-                };">${option}</label>`
-              )
+              .map(option => {
+                // Set colors based on user's answer
+                let backgroundColor = "";
+                if (option === questionData.correct_answer) {
+                  backgroundColor = userAnswer === option ? "#94d7a2" : "#94d7a2"; 
+                } else if (userAnswer === option) {
+                  backgroundColor = "#f8bcbc"; 
+                }
+                return `<label class="radio-label" style="background-color: ${backgroundColor};">${option}</label>`;
+              })
               .join("")}
           </div>
         </div>
@@ -116,11 +124,9 @@ function displayResults() {
   quizContainer.innerHTML += `<h3>You Scored: ${correctCount} / ${quizData.length} correct answers</h3>`;
 }
 
+
 if (quizData) {
   displayQuiz(quizData);
 } else {
   document.getElementById("quiz-questions").innerText = "No quiz data available.";
 }
-
-
-
