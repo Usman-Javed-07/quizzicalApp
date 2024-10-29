@@ -76,18 +76,24 @@ document.getElementById("prev-btn").addEventListener("click", () => {
   }
 });
 
+
 // Event listener for Check Answers button
 document.getElementById("check-answer-btn").addEventListener("click", () => {
-  captureAnswers(); 
-  displayResults();
-});
+    captureAnswers(); 
+    document.getElementById("check-answer-btn").style.display = "none"; 
+    document.getElementById("prev-btn").style.display = "none"; 
+    displayResults();
+    document.getElementById("go-back-to-start-again").style.display = "block"; 
+  });
 
+  
 // Display results on a new page
 function displayResults() {
   const quizContainer = document.getElementById("quiz-questions");
   quizContainer.innerHTML = "";
 
   let correctCount = 0;
+
 
   quizData.forEach((questionData, index) => {
     const userAnswer = userAnswers[index];
