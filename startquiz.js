@@ -1,6 +1,9 @@
 
+
+
 // Retrieve quiz data from localStorage
-const quizData = JSON.parse(localStorage.getItem("quizData"));
+const quizData 
+= JSON.parse(localStorage.getItem("quizData"));
 
 let currentPage = 1;
 const questionsPerPage = 5;
@@ -133,7 +136,9 @@ function displayResults() {
     quizContainer.innerHTML += questionHTML;
   });
 
-  quizContainer.innerHTML += `<h3>You Scored: ${correctCount} / ${quizData.length} correct answers</h3>`;
+//   quizContainer.innerHTML += `<h3>You Scored: ${correctCount} / ${quizData.length} correct answers</h3>`;
+quizContainer.innerHTML += `<h3 class="score-message">You Scored: ${correctCount} / ${quizData.length} correct answers</h3>`;
+
 }
 
 

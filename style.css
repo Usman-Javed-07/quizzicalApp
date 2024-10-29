@@ -16,7 +16,7 @@
   
   body {
     margin: 0 auto;
-    padding: 0 32px;
+    /* padding: 0 32px; */
     min-width: 320px;
     background-color: #f5f7fb;
    
@@ -97,7 +97,7 @@ background-color: black;
     justify-items: center;
     align-items: center;
     height: 100vh;
-  /* background-color: #d5e2ff; */
+  background-color: #d5e2ff;
   padding: 30px;
 }
 
@@ -245,4 +245,11 @@ hr {
 }
 #check-answer-btn:hover {
    background-color: #000;
+}
+
+ .score-message {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: red;
 }
