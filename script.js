@@ -26,4 +26,3 @@ quizzes.forEach((quiz) => {
 });
 
 
-

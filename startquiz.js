@@ -86,6 +86,12 @@ document.getElementById("check-answer-btn").addEventListener("click", () => {
     document.getElementById("go-back-to-start-again").style.display = "block"; 
   });
 
+  document.getElementById("go-back-to-start-again").addEventListener("click", () => {
+    currentPage = 1;
+    userAnswers.fill(null); 
+    document.getElementById("go-back-to-start-again").style.display = "none";
+    displayQuiz(quizData);
+  });
   
 // Display results on a new page
 function displayResults() {
