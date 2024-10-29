@@ -474,3 +474,14 @@ object-position: center;
   padding-right: 20px;
 
 }
+.quiz-footer h3 {
+ background-color: #d5e2ff;
+ display: flex;
+ flex-flow: row-reverse;
+ padding-right: 20px;
+ padding-bottom: 10px;
+}
+.startquiz h3 {
+  float: right;
+  padding-right: 20px;
+}
