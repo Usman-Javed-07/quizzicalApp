@@ -81,12 +81,12 @@ background-color: black;
 }
 .quizes:hover {
 
-  background-color: #fff;
+  background-color: black;
   scale: 1.1;
 
 }
 .quizes h1:hover {
-  color: transparent;
+  color: white;
 
 }
 
